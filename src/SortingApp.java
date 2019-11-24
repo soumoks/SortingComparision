@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class SortingApp {
     public static void main(String [] args){
         String order = "";
@@ -21,6 +23,8 @@ public class SortingApp {
         else{
             System.out.println("Please correct your inputs and try again");
         }
+
+        printArray(generateArray("random",100));
     }
 
     public static boolean validateOrder(String myOrder){
@@ -53,6 +57,38 @@ public class SortingApp {
             }
         }
         return validAlgorithm;
+    }
+
+    public static int [] generateArray(String myOrder,int mySize){
+        int [] myArray = new int[mySize];
+
+        if(myOrder.toLowerCase().equals("ascending")){
+            for(int i=0;i<mySize;i++){
+                myArray[i] = i+1;
+            }
+        }
+        else if(myOrder.toLowerCase().equals("descending")){
+            for(int i=0;i<mySize;i++){
+                myArray[i] = mySize-i;
+            }
+        }
+        else  if(myOrder.toLowerCase().equals("random")){
+            for(int i=0;i<mySize;i++){
+                myArray[i] = getRandomNumberInts(1,mySize);
+            }
+        }
+        return myArray;
+    }
+
+    public static void printArray(int [] myArray){
+        for(int i=0;i<myArray.length;i++){
+            System.out.print(myArray[i] + " ");
+        }
+    }
+
+    public static int getRandomNumberInts(int min, int max){
+        Random random = new Random();
+        return random.ints(min,(max+1)).findFirst().getAsInt();
     }
 
 
