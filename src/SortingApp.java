@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Random;
 
 public class SortingApp {
@@ -5,11 +6,14 @@ public class SortingApp {
         String order = "";
         int size = 0;
         String algorithm = "";
-
-        //Contains the name of the outputfile
         String outputFile = "";
+        int [] inputArray;
+        SortingApp app = new SortingApp();
 
-        if(args.length > 0 && args.length == 4 && validateOrder(args[0]) && validateAlgorithm(args[2])){
+        Algorithm algorithmClass = new Algorithm();
+        FileManager fileManager = new FileManager();
+
+        if(args.length > 0 && args.length == 4 && app.validateOrder(args[0]) && app.validateAlgorithm(args[2])){
             order = args[0];
             size = Integer.parseInt(args[1]);
             algorithm = args[2];
@@ -19,15 +23,18 @@ public class SortingApp {
             System.out.println("Size: " + size);
             System.out.println("Algorithm: " + algorithm);
             System.out.println("OutputFile: " + outputFile);
+
+            inputArray = app.generateArray("random",size);
+
+            app.runSort(inputArray, algorithm, outputFile, algorithmClass, fileManager);
+
         }
         else{
             System.out.println("Please correct your inputs and try again");
         }
-
-        printArray(generateArray("random",100));
     }
 
-    public static boolean validateOrder(String myOrder){
+    private boolean validateOrder(String myOrder){
         //Possible values for order
         String [] orderValues = {"ascending","descending","random"};
         boolean validOrder = false;
@@ -43,7 +50,7 @@ public class SortingApp {
         return validOrder;
     }
 
-    public static boolean validateAlgorithm(String myAlgorithm){
+    private boolean validateAlgorithm(String myAlgorithm){
         //Possible values for algorithm.
         String [] algorithmValues = {"bubble","insertion","merge","quick"};
         boolean validAlgorithm = false;
@@ -59,7 +66,7 @@ public class SortingApp {
         return validAlgorithm;
     }
 
-    public static int [] generateArray(String myOrder,int mySize){
+    private int [] generateArray(String myOrder, int mySize){
         int [] myArray = new int[mySize];
 
         if(myOrder.toLowerCase().equals("ascending")){
@@ -80,16 +87,22 @@ public class SortingApp {
         return myArray;
     }
 
-    public static void printArray(int [] myArray){
+    public void printArray(int [] myArray){
         for(int i=0;i<myArray.length;i++){
             System.out.print(myArray[i] + " ");
         }
     }
 
-    public static int getRandomNumberInts(int min, int max){
+    private int getRandomNumberInts(int min, int max){
         Random random = new Random();
         return random.ints(min,(max+1)).findFirst().getAsInt();
     }
 
-
+    private void runSort(int[] inputArray, String algorithm, String outputFile, Algorithm algorithmClass, FileManager fileManager) {
+        if(algorithm.equalsIgnoreCase("bubble")) {
+            int[] sortedArr = algorithmClass.sort(inputArray);
+            algorithmClass.printList(sortedArr);
+            fileManager.writeDataToFile(sortedArr, "BubbleSort.txt");
+        }
+    }
 }
