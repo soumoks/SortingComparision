@@ -2,6 +2,9 @@ import java.io.File;
 import java.util.Random;
 
 public class SortingApp {
+    Algorithm algorithmClass = new Algorithm();
+    FileManager fileManager = new FileManager();
+
     public static void main(String [] args){
         String order = "";
         int size = 0;
@@ -9,9 +12,6 @@ public class SortingApp {
         String outputFile = "";
         int [] inputArray;
         SortingApp app = new SortingApp();
-
-        Algorithm algorithmClass = new Algorithm();
-        FileManager fileManager = new FileManager();
 
         if(args.length > 0 && args.length == 4 && app.validateOrder(args[0]) && app.validateAlgorithm(args[2])){
             order = args[0];
@@ -24,9 +24,9 @@ public class SortingApp {
             System.out.println("Algorithm: " + algorithm);
             System.out.println("OutputFile: " + outputFile);
 
-            inputArray = app.generateArray("random",size);
+            inputArray = app.generateArray(order,size);
 
-            app.runSort(inputArray, algorithm, outputFile, algorithmClass, fileManager);
+            app.runSort(inputArray, algorithm, outputFile);
 
         }
         else{
@@ -98,9 +98,10 @@ public class SortingApp {
         return random.ints(min,(max+1)).findFirst().getAsInt();
     }
 
-    private void runSort(int[] inputArray, String algorithm, String outputFile, Algorithm algorithmClass, FileManager fileManager) {
+    private void runSort(int[] inputArray, String algorithm, String outputFile) {
+        SortingApp app = new SortingApp();
         if(algorithm.equalsIgnoreCase("bubble")) {
-            int[] sortedArr = algorithmClass.sort(inputArray);
+            int[] sortedArr = algorithmClass.bubbleSort(inputArray);
             algorithmClass.printList(sortedArr);
             fileManager.writeDataToFile(sortedArr, "BubbleSort.txt");
         }
