@@ -25,9 +25,7 @@ public class SortingApp {
             System.out.println("OutputFile: " + outputFile);
 
             inputArray = app.generateArray(order,size);
-
             app.runSort(inputArray, algorithm, outputFile);
-
         }
         else{
             System.out.println("Please correct your inputs and try again");
@@ -103,7 +101,12 @@ public class SortingApp {
         if(algorithm.equalsIgnoreCase("bubble")) {
             int[] sortedArr = algorithmClass.bubbleSort(inputArray);
             algorithmClass.printList(sortedArr);
-            fileManager.writeDataToFile(sortedArr, "BubbleSort.txt");
+            fileManager.writeDataToFile(sortedArr, "Sort.txt");
+        }
+        else if(algorithm.equalsIgnoreCase("insertion")){
+            int [] sortedArr = algorithmClass.insertionSort(inputArray);
+            algorithmClass.printList(sortedArr);
+            fileManager.writeDataToFile(sortedArr, "Sort.txt");
         }
     }
 }
