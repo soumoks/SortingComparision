@@ -1,6 +1,7 @@
 public class Algorithm {
 
     public void bubbleSort(int [] arr) {
+
         for(int i = 0; i < arr.length; i++) {
             for(int j = 0; j < arr.length - 1; j++) {
                 if(arr[j] > arr[j+1]) {
@@ -10,6 +11,7 @@ public class Algorithm {
                 }
             }
         }
+
         //TODO check if array needs to be returned
         //return arr;
     }
@@ -52,15 +54,11 @@ public class Algorithm {
 
         // Initial index of merged subarry array
         int k = l;
-        while (i < n1 && j < n2)
-        {
-            if (L[i] <= R[j])
-            {
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
                 arr[k] = L[i];
                 i++;
-            }
-            else
-            {
+            } else {
                 arr[k] = R[j];
                 j++;
             }
@@ -68,16 +66,13 @@ public class Algorithm {
         }
 
         /* Copy remaining elements of L[] if any */
-        while (i < n1)
-        {
+        while (i < n1) {
             arr[k] = L[i];
             i++;
             k++;
         }
-
         /* Copy remaining elements of R[] if any */
-        while (j < n2)
-        {
+        while (j < n2) {
             arr[k] = R[j];
             j++;
             k++;
@@ -86,29 +81,28 @@ public class Algorithm {
 
     // Main function that sorts arr[l..r] using
     // merge()
-    void mergeSort(int arr[], int l, int r)
+    public void mergeSort(int arr[], int l, int r)
     {
         if (l < r)
         {
             // Find the middle point
             int m = (l+r)/2;
-
             // Sort first and second halves
             mergeSort(arr, l, m);
             mergeSort(arr , m+1, r);
-
             // Merge the sorted halves
             merge(arr, l, m, r);
         }
+        //return arr;
     }
 
-    public int[] quickSort(int [] arr, int low, int high) {
+    public void quickSort(int [] arr, int low, int high) {
         if(low < high) {
             int pi = partition(arr, low, high);
             quickSort(arr, low, pi - 1);
             quickSort(arr, pi+1, high);
         }
-        return arr;
+        //return arr;
     }
 
     /* This function takes last element as pivot, places the pivot element at its correct

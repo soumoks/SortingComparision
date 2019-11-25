@@ -12,6 +12,7 @@ public class SortingApp {
         String outputFile = "";
         int [] inputArray;
         SortingApp app = new SortingApp();
+        System.out.println("Time: " + System.currentTimeMillis());
 
         if(args.length > 0 && args.length == 4 && app.validateOrder(args[0]) && app.validateAlgorithm(args[2])){
             order = args[0];
@@ -23,6 +24,7 @@ public class SortingApp {
             System.out.println("Size: " + size);
             System.out.println("Algorithm: " + algorithm);
             System.out.println("OutputFile: " + outputFile);
+
 
             inputArray = app.generateArray(order,size);
             app.runSort(inputArray, algorithm, outputFile);
@@ -98,25 +100,52 @@ public class SortingApp {
 
     private void runSort(int[] inputArray, String algorithm, String outputFile) {
         SortingApp app = new SortingApp();
+        long startTime,endTime = 0;
         if(algorithm.equalsIgnoreCase("bubble")) {
+            startTime = System.currentTimeMillis();
             algorithmClass.bubbleSort(inputArray);
-            algorithmClass.printList(inputArray);
-            fileManager.writeDataToFile(inputArray, "Sort.txt");
+            endTime = System.currentTimeMillis();
+            System.out.println("Time required for bubble sort: " + calculateDuration(startTime,endTime));
+            //algorithmClass.printList(inputArray);
+            fileManager.writeDataToFile(inputArray, "BubbleSort.txt");
         }
         else if(algorithm.equalsIgnoreCase("insertion")){
+            startTime = System.currentTimeMillis();
             algorithmClass.insertionSort(inputArray);
-            algorithmClass.printList(inputArray);
-            fileManager.writeDataToFile(inputArray, "Sort.txt");
+            endTime = System.currentTimeMillis();
+            System.out.println("Time required for Insertion sort: " + calculateDuration(startTime,endTime));
+            //algorithmClass.printList(inputArray);
+            fileManager.writeDataToFile(inputArray, "InsertionSort.txt");
         }
         else if(algorithm.equalsIgnoreCase("merge")){
+            startTime = System.currentTimeMillis();
             algorithmClass.mergeSort(inputArray,0,inputArray.length -1);
-            algorithmClass.printList(inputArray);
-            fileManager.writeDataToFile(inputArray,"Sort.txt");
+            endTime = System.currentTimeMillis();
+            System.out.println("Time required for Merge sort: " + calculateDuration(startTime,endTime));
+            //algorithmClass.printList(inputArray);
+            fileManager.writeDataToFile(inputArray,"MergeSort.txt");
         }
         else if(algorithm.equalsIgnoreCase("quick")) {
-            int[] sortedArr = algorithmClass.quickSort(inputArray, 0, inputArray.length - 1);
-            algorithmClass.printList(sortedArr);
-            fileManager.writeDataToFile(sortedArr, "QuickSort.txt");
+            startTime = System.currentTimeMillis();
+            algorithmClass.quickSort(inputArray, 0, inputArray.length - 1);
+            endTime = System.currentTimeMillis();
+            System.out.println("Time required for Quick sort: " + calculateDuration(startTime,endTime));
+            //algorithmClass.printList(inputArray);
+            fileManager.writeDataToFile(inputArray, "QuickSort.txt");
         }
+    }
+
+    public long calculateDuration(long startTime, long endTime){
+        return endTime - startTime;
+    }
+
+    /**
+     * Test case to generate a table as follows.
+     * size,order,algorithm,time with the possible values mentioned below.
+     */
+    public void dataCollectionTestCase(){
+        String [] algorithmValues = {"bubble","insertion","merge","quick"};
+        String [] orderValues = {"ascending","descending","random"};
+        int [] sizeValues = {10,100,1000,10000,100000,1000000};
     }
 }
