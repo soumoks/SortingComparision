@@ -14,4 +14,13 @@ public class FileManager {
             System.err.format("IOException: %s%n", e);
         }
     }
+
+    public void writeDatatocsv(String [] arr, String filename) throws Exception{
+        FileWriter fw = new FileWriter(filename,true);
+        for(int i=0;i<arr.length;i++){
+            fw.write(arr[i] + " ");
+        }
+        fw.write("\n");
+        fw.close();
+    }
 }
