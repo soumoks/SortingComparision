@@ -99,14 +99,19 @@ public class SortingApp {
     private void runSort(int[] inputArray, String algorithm, String outputFile) {
         SortingApp app = new SortingApp();
         if(algorithm.equalsIgnoreCase("bubble")) {
-            int[] sortedArr = algorithmClass.bubbleSort(inputArray);
-            algorithmClass.printList(sortedArr);
-            fileManager.writeDataToFile(sortedArr, "Sort.txt");
+            algorithmClass.bubbleSort(inputArray);
+            algorithmClass.printList(inputArray);
+            fileManager.writeDataToFile(inputArray, "Sort.txt");
         }
         else if(algorithm.equalsIgnoreCase("insertion")){
-            int [] sortedArr = algorithmClass.insertionSort(inputArray);
-            algorithmClass.printList(sortedArr);
-            fileManager.writeDataToFile(sortedArr, "Sort.txt");
+            algorithmClass.insertionSort(inputArray);
+            algorithmClass.printList(inputArray);
+            fileManager.writeDataToFile(inputArray, "Sort.txt");
+        }
+        else if(algorithm.equalsIgnoreCase("merge")){
+            algorithmClass.mergeSort(inputArray,0,inputArray.length -1);
+            algorithmClass.printList(inputArray);
+            fileManager.writeDataToFile(inputArray,"Sort.txt");
         }
     }
 }
