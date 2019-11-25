@@ -113,5 +113,10 @@ public class SortingApp {
             algorithmClass.printList(inputArray);
             fileManager.writeDataToFile(inputArray,"Sort.txt");
         }
+        else if(algorithm.equalsIgnoreCase("quick")) {
+            int[] sortedArr = algorithmClass.quickSort(inputArray, 0, inputArray.length - 1);
+            algorithmClass.printList(sortedArr);
+            fileManager.writeDataToFile(sortedArr, "QuickSort.txt");
+        }
     }
 }
