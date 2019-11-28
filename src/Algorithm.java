@@ -11,9 +11,6 @@ public class Algorithm {
                 }
             }
         }
-
-        //TODO check if array needs to be returned
-        //return arr;
     }
 
     public void insertionSort(int [] arr){
@@ -24,8 +21,6 @@ public class Algorithm {
             }
             arr[j] = temp;
         }
-        //return arr;
-        //TODO check if array needs to be returned
     }
 
     //Functions for merge sort.

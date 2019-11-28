@@ -1,13 +1,8 @@
-import com.opencsv.CSVWriter;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Random;
 
 public class SortingApp {
-    Algorithm algorithmClass = new Algorithm();
-    FileManager fileManager = new FileManager();
+    private Algorithm algorithmClass = new Algorithm();
+    private FileManager fileManager = new FileManager();
 
     public static void main(String [] args) throws Exception {
         String order = "";
@@ -155,8 +150,8 @@ public class SortingApp {
     public void dataCollectionTestCase() throws Exception {
         String [] algorithmValues = {"bubble","insertion","merge","quick"};
         String [] orderValues = {"ascending","descending","random"};
-        int [] sizeValues = {10,100,1000,10000,100000,1000000};
-        //int [] sizeValues = {10,100,1000,10000};
+        //int [] sizeValues = {10,100,1000,10000,100000,1000000};
+        int [] sizeValues = {10,100,1000,10000};
         int [] inputArray;
         long duration = 0;
 
