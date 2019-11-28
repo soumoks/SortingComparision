@@ -11,21 +11,33 @@ public class SortingApp {
         String outputFile = "";
         int [] inputArray;
         SortingApp app = new SortingApp();
-        app.dataCollectionTestCase();
 
         if(args.length > 0 && args.length == 4 && app.validateOrder(args[0]) && app.validateAlgorithm(args[2]) && app.validateSize(args[1])){
             order = args[0];
             size = Integer.parseInt(args[1]);
             algorithm = args[2];
             outputFile = args[3];
+            System.out.println("Selected parameters:");
             System.out.println("Argument lenght: " + args.length);
             System.out.println("Order: " + order);
             System.out.println("Size: " + size);
             System.out.println("Algorithm: " + algorithm);
             System.out.println("OutputFile: " + outputFile);
-
+            System.out.println();
             inputArray = app.generateArray(order,size);
+            System.out.println("Input array generated is :");
+            app.printArray(inputArray);
+            System.out.println();
+            System.out.println("Running sort...");
             app.runSort(inputArray, algorithm,outputFile);
+            System.out.println();
+            System.out.println();
+            System.out.println("Sorted array is:");
+            app.printArray(inputArray);
+            System.out.println();
+            System.out.println("Running Test case with multiple inputs...");
+            app.dataCollectionTestCase();
+            System.out.println("Test case complete");
         }
         else{
             System.out.println("Please correct your inputs and try again");
@@ -154,6 +166,11 @@ public class SortingApp {
     public void dataCollectionTestCase() throws Exception {
         String [] algorithmValues = {"bubble","insertion","merge","quick"};
         String [] orderValues = {"ascending","descending","random"};
+
+        /*
+        Commented the below sizeValues with all the different elements to save time on each run.
+        Please uncomment to test with all input sizes.
+         */
         //int [] sizeValues = {10,100,1000,10000,100000,1000000};
         int [] sizeValues = {10,100,1000,10000};
         int [] inputArray;
