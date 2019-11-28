@@ -3,7 +3,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileManager {
-
     public void writeDataToFile(int[] arr, String filename) {
         try (FileWriter writer = new FileWriter(filename);
              BufferedWriter bw = new BufferedWriter(writer)) {

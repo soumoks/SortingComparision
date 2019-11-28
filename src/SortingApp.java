@@ -13,7 +13,7 @@ public class SortingApp {
         SortingApp app = new SortingApp();
         app.dataCollectionTestCase();
 
-        if(args.length > 0 && args.length == 4 && app.validateOrder(args[0]) && app.validateAlgorithm(args[2])){
+        if(args.length > 0 && args.length == 4 && app.validateOrder(args[0]) && app.validateAlgorithm(args[2]) && app.validateSize(args[1])){
             order = args[0];
             size = Integer.parseInt(args[1]);
             algorithm = args[2];
@@ -62,6 +62,10 @@ public class SortingApp {
             }
         }
         return validAlgorithm;
+    }
+
+    private boolean validateSize(String size) {
+        return Integer.parseInt(size) > 0;
     }
 
     private int [] generateArray(String myOrder, int mySize){
