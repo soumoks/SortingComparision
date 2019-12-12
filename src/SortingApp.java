@@ -1,9 +1,18 @@
 import java.util.Random;
 
+/**
+ * The type Sorting app.
+ */
 public class SortingApp {
     private Algorithm algorithmClass = new Algorithm();
     private FileManager fileManager = new FileManager();
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String [] args) throws Exception {
         String order = "";
         int size = 0;
@@ -43,6 +52,7 @@ public class SortingApp {
             System.out.println("Please correct your inputs and try again");
         }
     }
+
 
     private boolean validateOrder(String myOrder){
         //Possible values for order
@@ -101,6 +111,11 @@ public class SortingApp {
         return myArray;
     }
 
+    /**
+     * Print array.
+     *
+     * @param myArray the my array
+     */
     public void printArray(int [] myArray){
         for(int i=0;i<myArray.length;i++){
             System.out.print(myArray[i] + " ");
@@ -155,6 +170,13 @@ public class SortingApp {
         return duration;
     }
 
+    /**
+     * Calculate duration long.
+     *
+     * @param startTime the start time
+     * @param endTime   the end time
+     * @return the long
+     */
     public long calculateDuration(long startTime, long endTime){
         return endTime - startTime;
     }
@@ -162,6 +184,8 @@ public class SortingApp {
     /**
      * Test case to generate a table as follows.
      * size,order,algorithm,time with the possible values mentioned below.
+     *
+     * @throws Exception the exception
      */
     public void dataCollectionTestCase() throws Exception {
         String [] algorithmValues = {"bubble","insertion","merge","quick"};

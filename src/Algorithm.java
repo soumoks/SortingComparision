@@ -1,5 +1,13 @@
+/**
+ * The type Algorithm.
+ */
 public class Algorithm {
 
+    /**
+     * Bubble sort.
+     *
+     * @param arr the arr
+     */
     public void bubbleSort(int [] arr) {
 
         for(int i = 0; i < arr.length; i++) {
@@ -13,6 +21,11 @@ public class Algorithm {
         }
     }
 
+    /**
+     * Insertion sort.
+     *
+     * @param arr the arr
+     */
     public void insertionSort(int [] arr){
         for(int i=1,j;i<arr.length;i++){
             int temp = arr[i];
@@ -23,7 +36,15 @@ public class Algorithm {
         }
     }
 
-    //Functions for merge sort.
+    /**
+     * Merge.
+     *
+     * @param arr the arr
+     * @param l   the l
+     * @param m   the m
+     * @param r   the r
+     */
+//Functions for merge sort.
     //https://www.geeksforgeeks.org/merge-sort/
     void merge(int arr[], int l, int m, int r)
     {
@@ -74,7 +95,14 @@ public class Algorithm {
         }
     }
 
-    // Main function that sorts arr[l..r] using
+    /**
+     * Merge sort.
+     *
+     * @param arr the arr
+     * @param l   the l
+     * @param r   the r
+     */
+// Main function that sorts arr[l..r] using
     // merge()
     public void mergeSort(int arr[], int l, int r)
     {
@@ -91,7 +119,14 @@ public class Algorithm {
         //return arr;
     }
 
-    //Replaced quick sort with an iterative implementation
+    /**
+     * Quick sort.
+     *
+     * @param arr the arr
+     * @param l   the l
+     * @param h   the h
+     */
+//Replaced quick sort with an iterative implementation
     //https://www.geeksforgeeks.org/iterative-quick-sort/
     public void quickSort(int [] arr, int l, int h) {
         // Create an auxiliary stack
@@ -153,6 +188,11 @@ public class Algorithm {
         return i+1;
     }
 
+    /**
+     * Print list.
+     *
+     * @param arr the arr
+     */
     public void printList(int[] arr) {
         for(int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
